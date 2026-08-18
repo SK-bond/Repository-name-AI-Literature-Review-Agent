@@ -1,0 +1,123 @@
+# ===============================
+# AI Literature Review Agent
+# Required Python Libraries
+# ===============================
+
+# -------------------------------
+# FastAPI
+# -------------------------------
+# Used to create the backend server.
+# It receives requests from the frontend
+# and returns responses.
+fastapi
+
+# -------------------------------
+# Uvicorn
+# -------------------------------
+# Runs the FastAPI application.
+# Think of it as the engine that starts the server.
+uvicorn
+
+# -------------------------------
+# Requests
+# -------------------------------
+# Used to communicate with APIs
+# such as arXiv and Semantic Scholar.
+requests
+
+# -------------------------------
+# LangChain
+# -------------------------------
+# Helps us build LLM applications.
+# It connects prompts, LLMs,
+# vector databases and tools together.
+langchain
+
+# -------------------------------
+# LangGraph
+# -------------------------------
+# Used for creating multiple AI agents
+# that work together.
+langgraph
+
+# -------------------------------
+# OpenAI
+# -------------------------------
+# Allows Python to communicate
+# with OpenAI models.
+openai
+
+# -------------------------------
+# ChromaDB
+# -------------------------------
+# Vector database used to store
+# embeddings of research papers.
+chromadb
+
+# -------------------------------
+# Sentence Transformers
+# -------------------------------
+# Converts text into embeddings
+# (numerical vectors).
+sentence-transformers
+
+# -------------------------------
+# LlamaIndex
+# -------------------------------
+# Helps connect documents
+# with LLMs.
+llama-index
+
+# -------------------------------
+# BeautifulSoup
+# -------------------------------
+# Used for parsing HTML/XML
+# if required.
+beautifulsoup4
+
+# -------------------------------
+# Pandas
+# -------------------------------
+# Used for working with tables
+# and CSV files.
+pandas
+
+# -------------------------------
+# NumPy
+# -------------------------------
+# Used for mathematical
+# operations.
+numpy
+
+# -------------------------------
+# Python-dotenv
+# -------------------------------
+# Reads secret keys
+# from a .env file.
+python-dotenv
+
+# -------------------------------
+# Pydantic
+# -------------------------------
+# Used by FastAPI to validate data.
+pydantic
+
+# -------------------------------
+# Streamlit
+# -------------------------------
+# Creates the frontend
+# web interface.
+streamlit
+
+# -------------------------------
+# ReportLab
+# -------------------------------
+# Used to generate PDF reports.
+reportlab
+
+# -------------------------------
+# python-docx
+# -------------------------------
+# Used to generate Word (.docx)
+# reports.
+python-docx
