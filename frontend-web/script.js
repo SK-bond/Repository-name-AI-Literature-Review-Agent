@@ -1,6 +1,18 @@
+// =========================================================
+// AI Literature Review Agent - Frontend
+// =========================================================
+
+// ---------------------------------------------------------
+// Backend API
+// ---------------------------------------------------------
+
 const API_URL =
     "https://ai-literature-review-backend.onrender.com";
 
+
+// ---------------------------------------------------------
+// Get HTML Elements
+// ---------------------------------------------------------
 
 const topicInput =
     document.getElementById("topic");
@@ -24,11 +36,19 @@ const copyBtn =
     document.getElementById("copyBtn");
 
 
+// =========================================================
+// Generate Button
+// =========================================================
+
 generateBtn.addEventListener(
     "click",
     generateReview
 );
 
+
+// =========================================================
+// Enter Key
+// =========================================================
 
 topicInput.addEventListener(
     "keydown",
@@ -44,11 +64,19 @@ topicInput.addEventListener(
 );
 
 
+// =========================================================
+// Generate Literature Review
+// =========================================================
+
 async function generateReview() {
 
     const topic =
         topicInput.value.trim();
 
+
+    // -----------------------------------------------------
+    // Validate input
+    // -----------------------------------------------------
 
     if (!topic) {
 
@@ -60,11 +88,21 @@ async function generateReview() {
     }
 
 
-    loading.classList.remove("hidden");
+    // -----------------------------------------------------
+    // Show loading
+    // -----------------------------------------------------
 
-    result.classList.add("hidden");
+    loading.classList.remove(
+        "hidden"
+    );
 
-    errorBox.classList.add("hidden");
+    result.classList.add(
+        "hidden"
+    );
+
+    errorBox.classList.add(
+        "hidden"
+    );
 
     generateBtn.disabled = true;
 
@@ -74,10 +112,15 @@ async function generateReview() {
 
     try {
 
+        // -------------------------------------------------
+        // Send request to FastAPI backend
+        // -------------------------------------------------
+
         const response =
             await fetch(
                 `${API_URL}/review`,
                 {
+
                     method: "POST",
 
                     headers: {
@@ -88,9 +131,14 @@ async function generateReview() {
                     body: JSON.stringify({
                         topic: topic
                     })
+
                 }
             );
 
+
+        // -------------------------------------------------
+        // Check response
+        // -------------------------------------------------
 
         if (!response.ok) {
 
@@ -101,29 +149,79 @@ async function generateReview() {
         }
 
 
+        // -------------------------------------------------
+        // Convert response to JSON
+        // -------------------------------------------------
+
         const data =
             await response.json();
 
 
-        reviewText.textContent =
+        // -------------------------------------------------
+        // Convert Markdown to HTML
+        // -------------------------------------------------
+
+        let markdown =
             data.review;
 
+
+        // -------------------------------------------------
+        // Convert plain URLs into Markdown links
+        // -------------------------------------------------
+
+        markdown =
+            convertUrlsToLinks(markdown);
+
+
+        // -------------------------------------------------
+        // Render Markdown
+        // -------------------------------------------------
+
+        const html =
+            marked.parse(
+                markdown,
+                {
+                    gfm: true,
+                    breaks: true
+                }
+            );
+
+
+        // -------------------------------------------------
+        // Sanitize generated HTML
+        // -------------------------------------------------
+
+        reviewText.innerHTML =
+            DOMPurify.sanitize(html);
+
+
+        // -------------------------------------------------
+        // Show result
+        // -------------------------------------------------
 
         result.classList.remove(
             "hidden"
         );
 
 
+        // -------------------------------------------------
+        // Scroll to result
+        // -------------------------------------------------
+
         result.scrollIntoView({
             behavior: "smooth"
         });
 
-
     }
+
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Literature Review Error:",
+            error
+        );
+
 
         showError(
             "Unable to generate the review. " +
@@ -132,21 +230,75 @@ async function generateReview() {
 
     }
 
+
     finally {
+
+        // -------------------------------------------------
+        // Hide loading
+        // -------------------------------------------------
 
         loading.classList.add(
             "hidden"
         );
 
+
         generateBtn.disabled =
             false;
 
+
         generateBtn.innerText =
             "✨ Generate Review";
+
     }
 
 }
 
+
+// =========================================================
+// Convert Plain URLs to Clickable Markdown Links
+// =========================================================
+
+function convertUrlsToLinks(text) {
+
+    const urlRegex =
+        /(?<!["'=])(https?:\/\/[^\s<]+)/g;
+
+
+    return text.replace(
+        urlRegex,
+        function(url) {
+
+            // Remove punctuation from URL ending
+            let cleanUrl = url;
+
+            let punctuation = "";
+
+
+            while (
+                /[.,;:!?)]$/.test(cleanUrl)
+            ) {
+
+                punctuation =
+                    cleanUrl.slice(-1) +
+                    punctuation;
+
+                cleanUrl =
+                    cleanUrl.slice(0, -1);
+
+            }
+
+
+            return `[${cleanUrl}](${cleanUrl})${punctuation}`;
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// Show Error
+// =========================================================
 
 function showError(message) {
 
@@ -160,24 +312,46 @@ function showError(message) {
 }
 
 
+// =========================================================
+// Copy Review
+// =========================================================
+
 copyBtn.addEventListener(
     "click",
     async function() {
 
-        await navigator.clipboard.writeText(
-            reviewText.textContent
-        );
+        try {
 
-        copyBtn.innerText =
-            "✓ Copied";
+            // Copy the visible text
+            await navigator.clipboard.writeText(
+                reviewText.innerText
+            );
 
-        setTimeout(
-            () => {
-                copyBtn.innerText =
-                    "Copy Review";
-            },
-            2000
-        );
+
+            copyBtn.innerText =
+                "✓ Copied";
+
+
+            setTimeout(
+                () => {
+
+                    copyBtn.innerText =
+                        "Copy Review";
+
+                },
+                2000
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Copy failed:",
+                error
+            );
+
+        }
 
     }
 );

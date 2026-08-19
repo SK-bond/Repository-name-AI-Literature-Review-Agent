@@ -406,3 +406,204 @@ footer {
 
     border-radius: 10px;
 }
+
+/* =========================================================
+   Literature Review Markdown Styling
+   ========================================================= */
+
+#reviewText {
+    line-height: 1.8;
+    color: #172033;
+    font-size: 17px;
+}
+
+
+/* ---------------------------------------------------------
+   Main Heading
+   --------------------------------------------------------- */
+
+#reviewText h1 {
+    font-size: 34px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 28px;
+    color: #111827;
+}
+
+
+/* ---------------------------------------------------------
+   Section Heading
+   --------------------------------------------------------- */
+
+#reviewText h2 {
+    font-size: 27px;
+    font-weight: 750;
+    margin-top: 38px;
+    margin-bottom: 18px;
+    color: #1e293b;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+
+/* ---------------------------------------------------------
+   Sub Heading
+   --------------------------------------------------------- */
+
+#reviewText h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    color: #334155;
+}
+
+
+/* ---------------------------------------------------------
+   Smaller Heading
+   --------------------------------------------------------- */
+
+#reviewText h4 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    color: #475569;
+}
+
+
+/* ---------------------------------------------------------
+   Paragraphs
+   --------------------------------------------------------- */
+
+#reviewText p {
+    margin-bottom: 20px;
+}
+
+
+/* ---------------------------------------------------------
+   Bold Text
+   --------------------------------------------------------- */
+
+#reviewText strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+
+/* ---------------------------------------------------------
+   Italic Text
+   --------------------------------------------------------- */
+
+#reviewText em {
+    font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   Lists
+   --------------------------------------------------------- */
+
+#reviewText ul,
+#reviewText ol {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+
+#reviewText li {
+    margin-bottom: 8px;
+}
+
+
+/* ---------------------------------------------------------
+   Links
+   --------------------------------------------------------- */
+
+#reviewText a {
+    color: #4f46e5;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+
+#reviewText a:hover {
+    color: #7c3aed;
+}
+
+
+/* ---------------------------------------------------------
+   Horizontal Line
+   --------------------------------------------------------- */
+
+#reviewText hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 30px 0;
+}
+
+
+/* ---------------------------------------------------------
+   Code
+   --------------------------------------------------------- */
+
+#reviewText code {
+    background: #f1f5f9;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+
+/* ---------------------------------------------------------
+   Code Blocks
+   --------------------------------------------------------- */
+
+#reviewText pre {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 18px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+
+/* ---------------------------------------------------------
+   Blockquotes
+   --------------------------------------------------------- */
+
+#reviewText blockquote {
+    border-left: 4px solid #6366f1;
+    padding-left: 18px;
+    margin: 20px 0;
+    color: #475569;
+    font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   Tables
+   --------------------------------------------------------- */
+
+#reviewText table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+}
+
+
+#reviewText th,
+#reviewText td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: left;
+}
+
+
+#reviewText th {
+    background: #f8fafc;
+    font-weight: 700;
+}
