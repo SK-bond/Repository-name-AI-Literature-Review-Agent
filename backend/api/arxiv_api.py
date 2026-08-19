@@ -77,6 +77,7 @@ def search_arxiv(query: str):
     papers = []
 
     # Loop through every paper.
+        # Loop through every paper.
     for entry in root.findall("atom:entry", namespace):
 
         # Extract paper title.
@@ -88,11 +89,33 @@ def search_arxiv(query: str):
         # Extract paper link.
         link = entry.find("atom:id", namespace).text
 
+        # -------------------------------------------------------
+        # Extract authors.
+        # arXiv XML stores each author as:
+        # <author><name>Author Name</name></author>
+        # -------------------------------------------------------
+        authors = []
+
+        for author_entry in entry.findall("atom:author", namespace):
+            name_el = author_entry.find("atom:name", namespace)
+            if name_el is not None and name_el.text:
+                authors.append(name_el.text.strip())
+
+        # -------------------------------------------------------
+        # Extract publication date.
+        # arXiv format: "2023-05-12T00:00:00Z"
+        # citation_agent.py reads the first 4 characters as the year.
+        # -------------------------------------------------------
+        published_el = entry.find("atom:published", namespace)
+        published = published_el.text.strip() if published_el is not None else None
+
         # Store paper information.
         papers.append({
             "title": title,
             "summary": summary,
-            "link": link
+            "link": link,
+            "authors": authors,
+            "published": published
         })
 
     # Return all papers.
