@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Literature Review Agent</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            📚 AI Literature Review Agent
+        </div>
+
+        <div class="status">
+            ● AI ONLINE
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="badge">
+                🤖 AI-POWERED RESEARCH ASSISTANT
+            </div>
+
+            <h1>
+                Generate Literature Reviews
+                <span>with AI</span>
+            </h1>
+
+            <p>
+                Search research papers, summarize findings,
+                identify research gaps and generate a structured
+                literature review automatically.
+            </p>
+
+        </section>
+
+
+        <section class="review-card">
+
+            <label for="topic">
+                Research Topic
+            </label>
+
+            <div class="input-container">
+
+                <input
+                    type="text"
+                    id="topic"
+                    placeholder="Example: Neural Networks"
+                >
+
+                <button id="generateBtn">
+                    ✨ Generate Review
+                </button>
+
+            </div>
+
+
+            <div id="loading" class="loading hidden">
+
+                <div class="spinner"></div>
+
+                <div>
+                    <strong>Generating your literature review...</strong>
+
+                    <p>
+                        Searching papers and analyzing research.
+                        This may take a few minutes.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div id="error" class="error hidden"></div>
+
+
+            <div id="result" class="result hidden">
+
+                <div class="result-header">
+
+                    <h2>📖 Literature Review</h2>
+
+                    <button id="copyBtn">
+                        Copy Review
+                    </button>
+
+                </div>
+
+                <div id="reviewText"></div>
+
+            </div>
+
+        </section>
+
+
+        <section class="features">
+
+            <div class="feature">
+                <div class="icon">🔎</div>
+
+                <h3>Research Discovery</h3>
+
+                <p>
+                    Automatically finds relevant research papers.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="icon">📝</div>
+
+                <h3>Paper Summarization</h3>
+
+                <p>
+                    Converts research papers into concise summaries.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="icon">🧠</div>
+
+                <h3>Research Gaps</h3>
+
+                <p>
+                    Identifies limitations and unexplored areas.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="icon">📚</div>
+
+                <h3>Literature Review</h3>
+
+                <p>
+                    Generates a structured academic review.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            AI Literature Review Agent • AI Research Assistant
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
