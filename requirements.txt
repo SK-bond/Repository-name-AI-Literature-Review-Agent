@@ -121,3 +121,7 @@ reportlab
 # Used to generate Word (.docx)
 # reports.
 python-docx
+
+mcp
+openai
+numpy
