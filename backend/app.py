@@ -16,19 +16,20 @@ app = FastAPI(
 
 
 # =========================================================
-# CORS Configuration
-# =========================================================
-# Allows your Vercel frontend to communicate with
-# the Render backend.
-#
-# "*" allows requests from any frontend.
-# This is suitable for your hackathon/demo deployment.
+# CORS
 # =========================================================
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+
+    # Your Vercel frontend
+    allow_origins=[
+        "https://ai-literature-review-agent.vercel.app"
+    ],
+
+    # No login/cookies are being used
+    allow_credentials=False,
+
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -44,7 +45,7 @@ class ReviewRequest(BaseModel):
 
 
 # =========================================================
-# Home Endpoint
+# Home
 # =========================================================
 
 @app.get("/")
@@ -56,7 +57,7 @@ def home():
 
 
 # =========================================================
-# Literature Review Endpoint
+# Review
 # =========================================================
 
 @app.post("/review")
@@ -68,7 +69,6 @@ def review(request: ReviewRequest):
     print("Topic:", request.topic)
     print("=" * 60)
 
-    # Run the complete AI literature review pipeline
     result = run_literature_review(request.topic)
 
     return {
